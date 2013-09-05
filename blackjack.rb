@@ -2,6 +2,8 @@
 require 'pry'
 
 puts "Welcome to Blackjack!"
+puts "What's your name?"
+player_name = gets.chomp
 
 # Create deck
 
@@ -59,7 +61,7 @@ end
 dealer_score = calculate_total(dealer_cards)
 player_score = calculate_total(player_cards)
 
-puts "You have: #{player_cards[0]} and #{player_cards[1]} for a total of #{player_score}."
+puts player_name + " has: #{player_cards[0]} and #{player_cards[1]} for a total of #{player_score}."
 puts '---'
 puts "Dealer has: #{dealer_cards[0]} and #{dealer_cards[1]} for a total of #{dealer_score}."
 puts '---'
@@ -111,12 +113,12 @@ else
       puts "Dealer's new card is #{dealer_cards[count]}."
       dealer_score = calculate_total(dealer_cards)
     end
-    puts "Dealer got busted." if dealer_score > 21
+    puts "Dealer got busted. You won!" if dealer_score > 21
     break
   end
 
   if dealer_score < 22 && player_score <22
-    puts "Your score is #{player_score}."
+    puts player_name + "'s score is #{player_score}."
     puts "Dealer's score is #{dealer_score}."
     if player_score > dealer_score
       puts "Congrats! You won!"
